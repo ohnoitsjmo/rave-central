@@ -12,6 +12,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './home/home.component';
+import { MemberFilterPipe } from './home/member-filter.pipe';
 
 const appRoutes:Routes = [
   {
@@ -25,7 +26,8 @@ const appRoutes:Routes = [
     HeaderComponent,
     FooterComponent, 
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MemberFilterPipe
   ],
   imports: [
     BrowserAnimationsModule,

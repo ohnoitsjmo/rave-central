@@ -105,12 +105,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/ngx-spinner.umd.js");
 /* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(ngx_spinner__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _home_member_filter_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./home/member-filter.pipe */ "./src/app/home/member-filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -140,7 +142,8 @@ var AppModule = /** @class */ (function () {
                 _header_header_component__WEBPACK_IMPORTED_MODULE_4__["HeaderComponent"],
                 _footer_footer_component__WEBPACK_IMPORTED_MODULE_5__["FooterComponent"],
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"]
+                _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
+                _home_member_filter_pipe__WEBPACK_IMPORTED_MODULE_13__["MemberFilterPipe"]
             ],
             imports: [
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
@@ -309,7 +312,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"text-danger\">\n  home works!\n</p>\n"
+module.exports = "<div class=\"container-fluid text-center\">\n\n  <!-- Shows list of logs -->\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col-md-4\">Member Name</th>\n        <th scope=\"col-md-1\">Member Number</th>\n        <th scope=\"col-md-5\">Member Phone</th>\n        <th scope=\"col-md-2\">Date Joined</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n          <td><input #filter1 name =\"filter1\" type=\"text\" [(ngModel)] = 'name'></td>\n        <td><input #filter2 name =\"filter2\" type=\"text\" [(ngModel)] = 'num'></td>\n        <td><input #filter3 name =\"filter3\" type=\"text\" [(ngModel)] = 'phone'></td>\n        <td><input #filter4 name =\"filter4\" type=\"text\" [(ngModel)] = 'date'></td>\n      </tr>\n      <tr *ngFor = \"let member of allMembers | memberFilter: name: num: phone: date;\">\n        <td>{{ member.name }}</td>\n        <td>{{ member.num }}</td>\n        <td>{{ member.phone }}</td>\n        <td>{{ member.date }}</td>\n      </tr>\n    </tbody>\n  </table>\n  \n  </div>\n\n"
 
 /***/ }),
 
@@ -324,6 +327,8 @@ module.exports = "<p class=\"text-danger\">\n  home works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _memberobject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../memberobject */ "./src/app/memberobject.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -334,10 +339,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent() {
+    function HomeComponent(http) {
+        this.http = http;
+        this.name = "";
+        this.num = "";
+        this.phone = "";
+        this.date = "";
     }
     HomeComponent.prototype.ngOnInit = function () {
+        this.allMembers = [new _memberobject__WEBPACK_IMPORTED_MODULE_1__["MemberObject"]("Justin", "12345678", "4089921767", Date()),
+            new _memberobject__WEBPACK_IMPORTED_MODULE_1__["MemberObject"]("Dominic", "876543231", "5101231234", Date()),
+            new _memberobject__WEBPACK_IMPORTED_MODULE_1__["MemberObject"]("Patrick", "151235552", "6262348812", Date())];
+        // this.http.post('/getAllMembers', {}).subscribe(res => {
+        //   this.allMembers = res as MemberObject[];
+        // })
     };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -345,9 +363,74 @@ var HomeComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], HomeComponent);
     return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/home/member-filter.pipe.ts":
+/*!********************************************!*\
+  !*** ./src/app/home/member-filter.pipe.ts ***!
+  \********************************************/
+/*! exports provided: MemberFilterPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberFilterPipe", function() { return MemberFilterPipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var MemberFilterPipe = /** @class */ (function () {
+    function MemberFilterPipe() {
+    }
+    MemberFilterPipe.prototype.transform = function (value, name, num, phone, date) {
+        if (!value) {
+            return value;
+        }
+        return value.filter(function (item) {
+            return item.name.toLowerCase().includes(name.toLowerCase()) && item.num.includes(num) && item.phone.includes(phone) && item.date.toLowerCase().includes(date.toLowerCase());
+        });
+    };
+    MemberFilterPipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'memberFilter'
+        })
+    ], MemberFilterPipe);
+    return MemberFilterPipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/memberobject.ts":
+/*!*********************************!*\
+  !*** ./src/app/memberobject.ts ***!
+  \*********************************/
+/*! exports provided: MemberObject */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberObject", function() { return MemberObject; });
+var MemberObject = /** @class */ (function () {
+    function MemberObject(name, num, phone, date) {
+        this.name = name;
+        this.num = num;
+        this.phone = phone;
+        this.date = date;
+    }
+    return MemberObject;
 }());
 
 
@@ -414,7 +497,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jmo/Documents/barebone/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jmo/Documents/cpieee-member-services/src/main.ts */"./src/main.ts");
 
 
 /***/ })
