@@ -1,0 +1,29 @@
+<div class="container-fluid text-center">
+
+  <!-- Shows list of logs -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col-md-4">Member Name</th>
+        <th scope="col-md-1">Member Number</th>
+        <th scope="col-md-5">Member Phone</th>
+        <th scope="col-md-2">Date Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><input #filter1 name ="filter1" type="text" [(ngModel)] = 'name'></td>
+        <td><input #filter2 name ="filter2" type="text" [(ngModel)] = 'num'></td>
+        <td><input #filter3 name ="filter3" type="text" [(ngModel)] = 'phone'></td>
+        <td><input #filter4 name ="filter4" type="text" [(ngModel)] = 'date'></td>
+      </tr>
+      <tr *ngFor = "let member of allMembers | memberFilter: name: num: phone: date;">
+        <td>{{ member.name }}</td>
+        <td>{{ member.num }}</td>
+        <td>{{ member.phone }}</td>
+        <td>{{ member.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  </div>
