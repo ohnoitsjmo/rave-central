@@ -412,7 +412,7 @@ var MemberFilterPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "h1 {\n    text-align:center;\n}"
 
 /***/ }),
 
@@ -423,7 +423,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid text-center\">\n\n  <!-- Shows list of logs -->\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col-md-4\">Member Name</th>\n        <th scope=\"col-md-1\">Member Number</th>\n        <th scope=\"col-md-5\">Member Phone</th>\n        <th scope=\"col-md-2\">Date Joined</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n          <td><input #filter1 name =\"filter1\" type=\"text\" [(ngModel)] = 'name'></td>\n        <td><input #filter2 name =\"filter2\" type=\"text\" [(ngModel)] = 'num'></td>\n        <td><input #filter3 name =\"filter3\" type=\"text\" [(ngModel)] = 'phone'></td>\n        <td><input #filter4 name =\"filter4\" type=\"text\" [(ngModel)] = 'date'></td>\n      </tr>\n      <tr *ngFor = \"let member of allMembers | memberFilter: name: num: phone: date;\">\n        <td>{{ member.name }}</td>\n        <td>{{ member.num }}</td>\n        <td>{{ member.phone }}</td>\n        <td>{{ member.date }}</td>\n      </tr>\n    </tbody>\n  </table>\n  \n  </div>"
+module.exports = "<h1>IEEE Member Search</h1>\n<div class=\"container-fluid text-center\">\n\n  <!-- Shows list of logs -->\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col-md-4\">Member Name</th>\n        <th scope=\"col-md-1\">Member Number</th>\n        <th scope=\"col-md-5\">Member Phone</th>\n        <th scope=\"col-md-2\">Date Joined</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n          <td><input #filter1 name =\"filter1\" type=\"text\" [(ngModel)] = 'name'></td>\n        <td><input #filter2 name =\"filter2\" type=\"text\" [(ngModel)] = 'num'></td>\n        <td><input #filter3 name =\"filter3\" type=\"text\" [(ngModel)] = 'phone'></td>\n        <td><input #filter4 name =\"filter4\" type=\"text\" [(ngModel)] = 'date'></td>\n      </tr>\n      <tr *ngFor = \"let member of allMembers | memberFilter: name: num: phone: date;\">\n        <td>{{ member.name }}</td>\n        <td>{{ member.num }}</td>\n        <td>{{ member.phone }}</td>\n        <td>{{ member.date }}</td>\n      </tr>\n    </tbody>\n  </table>\n  \n  </div>"
 
 /***/ }),
 
