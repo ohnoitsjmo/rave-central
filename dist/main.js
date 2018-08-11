@@ -334,6 +334,7 @@ module.exports = "<h1>Welcome to Cal Poly IEEE Member Services!</h1>\n<button ro
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -344,8 +345,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent() {
+    function HomeComponent(http) {
+        this.http = http;
     }
     HomeComponent.prototype.ngOnInit = function () {
     };
@@ -355,7 +358,7 @@ var HomeComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -385,12 +388,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var MemberFilterPipe = /** @class */ (function () {
     function MemberFilterPipe() {
     }
-    MemberFilterPipe.prototype.transform = function (value, name, num, phone, date) {
+    MemberFilterPipe.prototype.transform = function (value, name, mail, membernum, expdate) {
         if (!value) {
             return value;
         }
         return value.filter(function (item) {
-            return item.name.toLowerCase().includes(name.toLowerCase()) && item.num.includes(num) && item.phone.includes(phone) && item.date.toLowerCase().includes(date.toLowerCase());
+            if (item.displayName && item.mail && item.ieeeMemberNumber && item.ieeeExpiration) {
+                return item.displayName.toLowerCase().includes(name.toLowerCase()) && item.mail.toLowerCase().includes(mail) && item.ieeeMemberNumber.includes(membernum) && item.ieeeExpiration.toLowerCase().includes(expdate.toLowerCase());
+            }
         });
     };
     MemberFilterPipe = __decorate([
@@ -423,7 +428,7 @@ module.exports = "h1 {\n    text-align:center;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>IEEE Member Search</h1>\n<div class=\"container-fluid text-center\">\n\n  <!-- Shows list of logs -->\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col-md-4\">Member Name</th>\n        <th scope=\"col-md-1\">Member Number</th>\n        <th scope=\"col-md-5\">Member Phone</th>\n        <th scope=\"col-md-2\">Date Joined</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n          <td><input #filter1 name =\"filter1\" type=\"text\" [(ngModel)] = 'name'></td>\n        <td><input #filter2 name =\"filter2\" type=\"text\" [(ngModel)] = 'num'></td>\n        <td><input #filter3 name =\"filter3\" type=\"text\" [(ngModel)] = 'phone'></td>\n        <td><input #filter4 name =\"filter4\" type=\"text\" [(ngModel)] = 'date'></td>\n      </tr>\n      <tr *ngFor = \"let member of allMembers | memberFilter: name: num: phone: date;\">\n        <td>{{ member.name }}</td>\n        <td>{{ member.num }}</td>\n        <td>{{ member.phone }}</td>\n        <td>{{ member.date }}</td>\n      </tr>\n    </tbody>\n  </table>\n  \n  </div>"
+module.exports = "<h1>IEEE Member Search</h1>\n<div class=\"container-fluid text-center\">\n\n  <!-- Shows list of logs -->\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col-md-4\">Member Name</th>\n        <th scope=\"col-md-1\">Email</th>\n        <th scope=\"col-md-5\">IEEE Number</th>\n        <th scope=\"col-md-2\">Expiration Date</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td><input #filter1 name =\"filter1\" type=\"text\" [(ngModel)] = 'name'></td>\n        <td><input #filter2 name =\"filter2\" type=\"text\" [(ngModel)] = 'mail'></td>\n        <td><input #filter3 name =\"filter4\" type=\"text\" [(ngModel)] = 'membernum'></td>\n        <td><input #filter4 name =\"filter4\" type=\"text\" [(ngModel)] = 'expdate'></td>\n      </tr>\n      <tr *ngFor = \"let member of allMembers | memberFilter: name: mail: membernum: expdate;\">\n        <td>{{ member.displayName }}</td>\n        <td>{{ member.mail }}</td>\n        <td>{{ member.ieeeMemberNumber }}</td>\n        <td>{{ member.ieeeExpiration }}</td>\n      </tr>\n    </tbody>\n  </table>\n  \n  </div>"
 
 /***/ }),
 
@@ -438,8 +443,7 @@ module.exports = "<h1>IEEE Member Search</h1>\n<div class=\"container-fluid text
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberSearchComponent", function() { return MemberSearchComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _memberobject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../memberobject */ "./src/app/memberobject.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -451,22 +455,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
 var MemberSearchComponent = /** @class */ (function () {
     function MemberSearchComponent(http) {
         this.http = http;
         this.name = "";
-        this.num = "";
-        this.phone = "";
-        this.date = "";
+        this.mail = "";
+        this.membernum = "";
+        this.expdate = "";
     }
     MemberSearchComponent.prototype.ngOnInit = function () {
-        this.allMembers = [new _memberobject__WEBPACK_IMPORTED_MODULE_1__["MemberObject"]("Justin", "12345678", "4089921767", Date()),
-            new _memberobject__WEBPACK_IMPORTED_MODULE_1__["MemberObject"]("Dominic", "876543231", "5101231234", Date()),
-            new _memberobject__WEBPACK_IMPORTED_MODULE_1__["MemberObject"]("Patrick", "151235552", "6262348812", Date())];
-        // this.http.post('/getAllMembers', {}).subscribe(res => {
-        //   this.allMembers = res as MemberObject[];
-        // })
+        var _this = this;
+        this.http.post('/queryUser', {}).subscribe(function (res) {
+            _this.allMembers = res['users'];
+            console.log(_this.allMembers);
+        });
     };
     MemberSearchComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -474,33 +476,9 @@ var MemberSearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./member-search.component.html */ "./src/app/member-search/member-search.component.html"),
             styles: [__webpack_require__(/*! ./member-search.component.css */ "./src/app/member-search/member-search.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], MemberSearchComponent);
     return MemberSearchComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/memberobject.ts":
-/*!*********************************!*\
-  !*** ./src/app/memberobject.ts ***!
-  \*********************************/
-/*! exports provided: MemberObject */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberObject", function() { return MemberObject; });
-var MemberObject = /** @class */ (function () {
-    function MemberObject(name, num, phone, date) {
-        this.name = name;
-        this.num = num;
-        this.phone = phone;
-        this.date = date;
-    }
-    return MemberObject;
 }());
 
 

@@ -1,13 +1,13 @@
 export class MemberObject {
-    name:string;
-    num:string;
-    phone:string;
-    date:string;
+    displayName:string;
+    mail:string;
+    ieeeMemberNumber:number;
+    ieeeExpiration:string;
 
-    constructor(name:string, num:string, phone:string, date:string) {
-        this.name = name;
-        this.num = num;
-        this.phone = phone;
-        this.date = date;
+    constructor(displayName:string, mail:string, ieeeMemberNumber:number, ieeeExpiration:string) {
+        this.displayName = displayName;
+        this.mail = mail;
+        this.ieeeMemberNumber = ieeeMemberNumber;
+        this.ieeeExpiration = ieeeExpiration;
     }
 }
