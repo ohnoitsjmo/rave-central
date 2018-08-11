@@ -6,23 +6,23 @@
     <thead>
       <tr>
         <th scope="col-md-4">Member Name</th>
-        <th scope="col-md-1">Member Number</th>
-        <th scope="col-md-5">Member Phone</th>
-        <th scope="col-md-2">Date Joined</th>
+        <th scope="col-md-1">Email</th>
+        <th scope="col-md-5">IEEE Number</th>
+        <th scope="col-md-2">Expiration Date</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-          <td><input #filter1 name ="filter1" type="text" [(ngModel)] = 'name'></td>
-        <td><input #filter2 name ="filter2" type="text" [(ngModel)] = 'num'></td>
-        <td><input #filter3 name ="filter3" type="text" [(ngModel)] = 'phone'></td>
-        <td><input #filter4 name ="filter4" type="text" [(ngModel)] = 'date'></td>
+        <td><input #filter1 name ="filter1" type="text" [(ngModel)] = 'name'></td>
+        <td><input #filter2 name ="filter2" type="text" [(ngModel)] = 'mail'></td>
+        <td><input #filter3 name ="filter4" type="text" [(ngModel)] = 'membernum'></td>
+        <td><input #filter4 name ="filter4" type="text" [(ngModel)] = 'expdate'></td>
       </tr>
-      <tr *ngFor = "let member of allMembers | memberFilter: name: num: phone: date;">
-        <td>{{ member.name }}</td>
-        <td>{{ member.num }}</td>
-        <td>{{ member.phone }}</td>
-        <td>{{ member.date }}</td>
+      <tr *ngFor = "let member of allMembers | memberFilter: name: mail: membernum: expdate;">
+        <td>{{ member.displayName }}</td>
+        <td>{{ member.mail }}</td>
+        <td>{{ member.ieeeMemberNumber }}</td>
+        <td>{{ member.ieeeExpiration }}</td>
       </tr>
     </tbody>
   </table>
