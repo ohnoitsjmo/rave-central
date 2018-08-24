@@ -14,10 +14,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './home/home.component';
 import { MemberFilterPipe } from './member-search/member-filter.pipe';
 import { MemberSearchComponent } from './member-search/member-search.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes:Routes = [
   {
     path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'home',
     component: HomeComponent
   },
   {
@@ -33,7 +38,8 @@ const appRoutes:Routes = [
     AppComponent,
     HomeComponent,
     MemberFilterPipe,
-    MemberSearchComponent
+    MemberSearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,
