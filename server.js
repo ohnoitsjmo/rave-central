@@ -35,7 +35,7 @@ app.post('/queryUser', function(req, res) {
   var opts = {includeMembership: ['all'],
   attributes: ['cn', 'displayName', 'ieeeExpiration', 'ieeeMemberNumber', 'mail', 'member', 'o', 'sn', 'uid', 'description'],
   baseDn: 'dc=members,dc=calpolyieee,dc=com',
-  filter: 'cn=*'};
+  filter: '(\|(member=cn=activeMembers,dc=calpolyieee,dc=com)(member=cn=inactiveMembers,dc=calpolyieee,dc=com)(member=cn=arrearsMembers,dc=calpolyieee,dc=com))'};
   ad.find(opts, function(err, results) {
     var users=[];
     _.each(results.other, function(other) {
@@ -44,27 +44,42 @@ app.post('/queryUser', function(req, res) {
     res.json({users: users});
   });
 });
-  // var opts = {includeMembership: ['all'],
-  // attributes: ['cn', 'displayName', 'ieeeExpiration', 'ieeeMemberNumber', 'mail', 'member', 'o', 'sn', 'uid', 'description', 'userPassword'],
-  // filter: '(&(objectClass=ieeeUser)(member=cn=officers,dc=calpolyieee,dc=com))',
-  // baseDn: 'dc=members,dc=calpolyieee,dc=com'};
-  // var ad = new ActiveDirectory(config);
-  // var username = 'cn=dgaiero,dc=members,dc=calpolyieee,dc=com';
-  // var password = 'sky1.1';
- 
-// ad.authenticate(username, password, function(err, auth) {
-//   if (err) {
-//     console.log('ERROR: '+JSON.stringify(err));
-//     return;
-//   }
+
+app.post('/authenticate', function(req, res) {
+  var config = {
+    url: 'ldap://ldap.calpolyieee.com:389',
+    baseDN: 'DC=calpolyieee,DC=com',
+    username: 'CN=admin,DC=calpolyieee,DC=com',
+    password: 'p@ssw0rd1999'
+  }
+  var opts = {includeMembership: ['all'],
+  attributes: ['cn', 'displayName', 'ieeeExpiration', 'ieeeMemberNumber', 'mail', 'member', 'o', 'sn', 'uid', 'description', 'userPassword'],
+  filter: '(&(objectClass=ieeeUser)(member=cn=officers,dc=calpolyieee,dc=com))',
+  baseDn: 'dc=members,dc=calpolyieee,dc=com'};
+  var ad = new ActiveDirectory(config);
+  var username = 'ieeeMemberNumber=' + req.body['username'] + ',dc=members,dc=calpolyieee,dc=com';
+  var password = req.body['password'];
   
-//   if (auth) {
-//     console.log('Authenticated!');
-//   }
-//   else {
-//     console.log('Authentication failed!');
-//   }
-// });
+  ad.authenticate(username, password, function(err, auth) {
+    if (auth) {
+      res.json({isAuthenticated: true})
+    }
+    else {
+      res.json({isAuthenticated: false})
+    }
+  });
+});
+
+app.post('/getUserInfo', function (req, res) {
+  return res.json({isAuthenticated : req.session.isAuthenticated, username : req.session.username, 
+    email : req.session.email, givenName : req.session.loggedInUserGivenName, displayName : req.session.displayName });
+});
+
+app.post('/logout', function (req, res) {
+  //getApprovers("RevisedDeviation","DEV-003952M","CCB");
+  req.session.isAuthenticated = false;
+  res.json({isAuthenticated :req.session.isAuthenticated, loggedInUsername :req.session.loggedInUserGivenName});
+});
 
 app.listen(3000);
 console.log("Server running on port 3000");

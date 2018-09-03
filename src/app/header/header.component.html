@@ -1,3 +1,14 @@
-<p class="text-primary">
-  header works!
-</p>
+<ng-container *ngIf="loggedIn">
+  <div class="fw hdr">
+    <!-- HEADER -->
+      <div class="hdr-bg"></div>
+      <div class="hdr fw-vp">
+        <div class="hdr-utility">
+          <button (click)="user.logOutCurrentUser()" class="btn btn-hdr">  
+            <b>Log Out  </b>
+            <i class="material-icons md-icon">exit_to_app</i>
+          </button>
+      </div>
+      </div>
+  </div>
+</ng-container>
