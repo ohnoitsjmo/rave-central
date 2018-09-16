@@ -17,6 +17,12 @@ var ldap = require('ldapjs');
 
 app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.json());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 
 app.get('*', function (req, res) {
   console.log('I received a GET request');
@@ -62,26 +68,26 @@ app.post('/authenticate', function(req, res) {
   
   ad.authenticate(username, password, function(err, auth) {
     if (auth) {
-      console.log("authenticated");
-      res.json({isAuthenticated: true})
+      req.session.isAuthenticated = true;
+      res.json({isAuthenticated: req.session.isAuthenticated});
     }
     else {
-      console.log("invalid");
-      res.json({isAuthenticated: false})
+      req.session.isAuthenticated = false;
+      res.json({isAuthenticated: req.session.isAuthenticated});
     }
   });
 });
 
-app.post('/getUserInfo', function (req, res) {
-  return res.json({isAuthenticated : req.session.isAuthenticated, username : req.session.username, 
-    email : req.session.email, givenName : req.session.loggedInUserGivenName, displayName : req.session.displayName });
-});
-
-app.post('/logout', function (req, res) {
+app.post('/logout', function(req, res) {
   //getApprovers("RevisedDeviation","DEV-003952M","CCB");
   req.session.isAuthenticated = false;
   res.json({isAuthenticated :req.session.isAuthenticated, loggedInUsername :req.session.loggedInUserGivenName});
 });
+
+app.post('/isAuthenticated', function(req, res) {
+  console.log(req.session);
+  res.json({isAuthenticated: req.session.isAuthenticated});
+})
 
 app.listen(3000);
 console.log("Server running on port 3000");

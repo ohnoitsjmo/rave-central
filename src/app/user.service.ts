@@ -30,16 +30,11 @@ export class UserService {
     this.errorMessage = ' ';
   }
 
-  getUser() {
-    return this.http.post('/getUserInfo',{});
-  }
 
   // For logging out
   logOutCurrentUser(){
-    this.getUser().subscribe((res) => {
-      this.http.post('/logout',{}).subscribe(data => {
-        this.router.navigate(['/']);
-      });
-    })
+    this.http.post('/logout',{}).subscribe(data => {
+      this.router.navigate(['/']);
+    });
   }
 }

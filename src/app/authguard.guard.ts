@@ -13,7 +13,7 @@ export class AuthguardGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> {
         return new Promise<boolean>(resolve => {
-          this.http.post('/authenticate',{}).subscribe(data => {
+          this.http.post('/isAuthenticated',{}).subscribe(data => {
              if(data['isAuthenticated'] == true) {
                resolve(true);
              } else {

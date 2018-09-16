@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router:Router, private user:UserService, private http:HttpClient, private app:AppComponent) {}
 
   ngOnInit() { 
-    this.http.post('/authenticate',{}).toPromise().then((result) => {
+    this.http.post('/isAuthenticated',{}).toPromise().then((result) => {
       if(result['isAuthenticated'] == true){
         this.router.navigate(['home']);
       }
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     var username = e.target.elements[0].value;
     var password = e.target.elements[1].value;
     var loginObject = {username : username, password: password};
-    var response = this.http.post('/authenticate', loginObject).subscribe(data => {
+    this.http.post('/authenticate', loginObject).subscribe(data => {
       console.log(data);
       if(data['isAuthenticated'] == true) {
         this.route.queryParams.subscribe((params: Params) => {

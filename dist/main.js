@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "app-footer {\n    position: fixed;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    text-align: center;\n}"
 
 /***/ }),
 
@@ -146,10 +146,12 @@ var appRoutes = [
     {
         path: 'home',
         component: _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
+        canActivate: [_authguard_guard__WEBPACK_IMPORTED_MODULE_16__["AuthguardGuard"]]
     },
     {
         path: 'membersearch',
         component: _member_search_member_search_component__WEBPACK_IMPORTED_MODULE_14__["MemberSearchComponent"],
+        canActivate: [_authguard_guard__WEBPACK_IMPORTED_MODULE_16__["AuthguardGuard"]]
     }
 ];
 var AppModule = /** @class */ (function () {
@@ -231,7 +233,7 @@ var AuthguardGuard = /** @class */ (function () {
     AuthguardGuard.prototype.canActivate = function (next, state) {
         var _this = this;
         return new Promise(function (resolve) {
-            _this.http.post('/authenticate', {}).subscribe(function (data) {
+            _this.http.post('/isAuthenticated', {}).subscribe(function (data) {
                 if (data['isAuthenticated'] == true) {
                     resolve(true);
                 }
@@ -276,7 +278,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"text-success\">\n  footer works!\n</p>\n"
+module.exports = "<p>\n  © Copyright 2018 - Cal Poly IEEE Student Branch\n</p>\n"
 
 /***/ }),
 
@@ -542,7 +544,7 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.post('/authenticate', {}).toPromise().then(function (result) {
+        this.http.post('/isAuthenticated', {}).toPromise().then(function (result) {
             if (result['isAuthenticated'] == true) {
                 _this.router.navigate(['home']);
             }
@@ -554,7 +556,7 @@ var LoginComponent = /** @class */ (function () {
         var username = e.target.elements[0].value;
         var password = e.target.elements[1].value;
         var loginObject = { username: username, password: password };
-        var response = this.http.post('/authenticate', loginObject).subscribe(function (data) {
+        this.http.post('/authenticate', loginObject).subscribe(function (data) {
             console.log(data);
             if (data['isAuthenticated'] == true) {
                 _this.route.queryParams.subscribe(function (params) {
@@ -754,16 +756,11 @@ var UserService = /** @class */ (function () {
     UserService.prototype.initAll = function () {
         this.errorMessage = ' ';
     };
-    UserService.prototype.getUser = function () {
-        return this.http.post('/getUserInfo', {});
-    };
     // For logging out
     UserService.prototype.logOutCurrentUser = function () {
         var _this = this;
-        this.getUser().subscribe(function (res) {
-            _this.http.post('/logout', {}).subscribe(function (data) {
-                _this.router.navigate(['/']);
-            });
+        this.http.post('/logout', {}).subscribe(function (data) {
+            _this.router.navigate(['/']);
         });
     };
     UserService = __decorate([

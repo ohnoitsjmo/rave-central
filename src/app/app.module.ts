@@ -27,12 +27,12 @@ const appRoutes:Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [AuthguardGuard],
+    canActivate: [AuthguardGuard]
   },
   {
     path: 'membersearch',
     component: MemberSearchComponent,
-    // canActivate: [AuthguardGuard]
+    canActivate: [AuthguardGuard]
   }
 ]
 
