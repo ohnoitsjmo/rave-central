@@ -62,9 +62,11 @@ app.post('/authenticate', function(req, res) {
   
   ad.authenticate(username, password, function(err, auth) {
     if (auth) {
+      console.log("authenticated");
       res.json({isAuthenticated: true})
     }
     else {
+      console.log("invalid");
       res.json({isAuthenticated: false})
     }
   });

@@ -110,12 +110,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _authguard_guard__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./authguard.guard */ "./src/app/authguard.guard.ts");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var angular_6_datatable__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! angular-6-datatable */ "./node_modules/angular-6-datatable/index.js");
+/* harmony import */ var angular_6_datatable__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(angular_6_datatable__WEBPACK_IMPORTED_MODULE_18__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -172,7 +175,8 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatDialogModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
                 _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_9__["MatTooltipModule"],
-                ngx_spinner__WEBPACK_IMPORTED_MODULE_11__["NgxSpinnerModule"]
+                ngx_spinner__WEBPACK_IMPORTED_MODULE_11__["NgxSpinnerModule"],
+                angular_6_datatable__WEBPACK_IMPORTED_MODULE_18__["DataTableModule"]
             ],
             entryComponents: [],
             providers: [
@@ -593,15 +597,21 @@ var LoginComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberFilterPipe", function() { return MemberFilterPipe; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _member_search_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./member-search.component */ "./src/app/member-search/member-search.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var MemberFilterPipe = /** @class */ (function () {
-    function MemberFilterPipe() {
+    function MemberFilterPipe(member) {
+        this.member = member;
     }
     MemberFilterPipe.prototype.transform = function (value, name, mail, membernum, expdate) {
         if (!value) {
@@ -616,7 +626,8 @@ var MemberFilterPipe = /** @class */ (function () {
     MemberFilterPipe = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
             name: 'memberFilter'
-        })
+        }),
+        __metadata("design:paramtypes", [_member_search_component__WEBPACK_IMPORTED_MODULE_1__["MemberSearchComponent"]])
     ], MemberFilterPipe);
     return MemberFilterPipe;
 }());
@@ -643,7 +654,7 @@ module.exports = "h1 {\n    text-align:center;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>IEEE Member Search</h1>\n<div class=\"container-fluid text-center\">\n\n  <!-- Shows list of logs -->\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col-md-4\">Member Name</th>\n        <th scope=\"col-md-1\">Email</th>\n        <th scope=\"col-md-5\">IEEE Number</th>\n        <th scope=\"col-md-2\">Expiration Date</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td><input #filter1 name =\"filter1\" type=\"text\" [(ngModel)] = 'name'></td>\n        <td><input #filter2 name =\"filter2\" type=\"text\" [(ngModel)] = 'mail'></td>\n        <td><input #filter3 name =\"filter4\" type=\"text\" [(ngModel)] = 'membernum'></td>\n        <td><input #filter4 name =\"filter4\" type=\"text\" [(ngModel)] = 'expdate'></td>\n      </tr>\n      <tr *ngFor = \"let member of allMembers | memberFilter: name: mail: membernum: expdate;\">\n        <td>{{ member.displayName }}</td>\n        <td>{{ member.mail }}</td>\n        <td>{{ member.ieeeMemberNumber }}</td>\n        <td>{{ member.ieeeExpiration }}</td>\n      </tr>\n    </tbody>\n  </table>\n  \n  </div>"
+module.exports = "<h1>IEEE Member Search</h1>\n<div class=\"container-fluid text-center\">\n\n  <!-- Shows list of logs -->\n  <table class=\"table table-striped\" [mfData]=\"allMembers\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"10\">\n    <thead>\n      <tr>\n        <th scope=\"col-md-4\">Member Name</th>\n        <th scope=\"col-md-1\">Email</th>\n        <th scope=\"col-md-5\">IEEE Number</th>\n        <th scope=\"col-md-2\">Expiration Date</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td><input #filter1 name =\"filter1\" type=\"text\" [(ngModel)] = 'name'></td>\n        <td><input #filter2 name =\"filter2\" type=\"text\" [(ngModel)] = 'mail'></td>\n        <td><input #filter3 name =\"filter4\" type=\"text\" [(ngModel)] = 'membernum'></td>\n        <td><input #filter4 name =\"filter4\" type=\"text\" [(ngModel)] = 'expdate'></td>\n      </tr>\n      <ng-container *ngIf=\"!name && !mail && !membernum && !expdate; else all\">\n        <tr *ngFor = \"let member of mf.data | memberFilter: name: mail: membernum: expdate;\">\n          <td>{{ member.displayName }}</td>\n          <td>{{ member.mail }}</td>\n          <td>{{ member.ieeeMemberNumber }}</td>\n          <td>{{ member.ieeeExpiration }}</td>\n        </tr>\n      </ng-container>\n      <ng-template #all>\n        <tr *ngFor = \"let member of allMembers | memberFilter: name: mail: membernum: expdate;\">\n          <td>{{ member.displayName }}</td>\n          <td>{{ member.mail }}</td>\n          <td>{{ member.ieeeMemberNumber }}</td>\n          <td>{{ member.ieeeExpiration }}</td>\n        </tr>\n      </ng-template>\n    </tbody>\n    <tfoot>\n      <tr>\n        <td colspan=\"4\">\n          <mfBootstrapPaginator [rowsOnPageSet]=\"[10,25,50,100]\"></mfBootstrapPaginator>\n        </td>\n      </tr>\n    </tfoot>\n  </table>\n</div>"
 
 /***/ }),
 
@@ -826,7 +837,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jmo/Desktop/cpieee-member-services/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jmo/Desktop/Documents/Projects/cpieee-member-services/src/main.ts */"./src/main.ts");
 
 
 /***/ })

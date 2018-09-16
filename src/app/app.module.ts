@@ -17,6 +17,7 @@ import { MemberSearchComponent } from './member-search/member-search.component';
 import { LoginComponent } from './login/login.component';
 import { AuthguardGuard } from './authguard.guard';
 import { UserService } from './user.service';
+import {DataTableModule} from "angular-6-datatable";
 
 const appRoutes:Routes = [
   {
@@ -54,7 +55,8 @@ const appRoutes:Routes = [
     MatDialogModule,
     MatButtonModule,
     MatTooltipModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    DataTableModule
   ],
   entryComponents : [
   ],
