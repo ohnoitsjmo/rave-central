@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { MemberFilterPipe } from './member-search/member-filter.pipe';
 import { MemberSearchComponent } from './member-search/member-search.component';
 import { LoginComponent } from './login/login.component';
+import { AuthguardGuard } from './authguard.guard';
+import { UserService } from './user.service';
+import {DataTableModule} from "angular-6-datatable";
 
 const appRoutes:Routes = [
   {
@@ -23,11 +26,13 @@ const appRoutes:Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthguardGuard]
   },
   {
     path: 'membersearch',
-    component: MemberSearchComponent
+    component: MemberSearchComponent,
+    canActivate: [AuthguardGuard]
   }
 ]
 
@@ -50,11 +55,14 @@ const appRoutes:Routes = [
     MatDialogModule,
     MatButtonModule,
     MatTooltipModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    DataTableModule
   ],
   entryComponents : [
   ],
   providers: [
+    UserService,
+    AuthguardGuard,
   ],
   bootstrap: [AppComponent]
 })

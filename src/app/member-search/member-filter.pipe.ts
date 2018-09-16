@@ -1,9 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { MemberSearchComponent } from './member-search.component';
 
 @Pipe({
   name: 'memberFilter'
 })
 export class MemberFilterPipe implements PipeTransform {
+
+  constructor(private member:MemberSearchComponent) { }
 
   transform(value: any, name:any, mail:any, membernum:any, expdate:any) {
     if (!value) {

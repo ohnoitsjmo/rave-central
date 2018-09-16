@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as auth0 from "auth0-js";
 
 @Component({
   selector: 'app-root',
