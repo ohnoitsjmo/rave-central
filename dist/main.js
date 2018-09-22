@@ -420,7 +420,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".home-container {\n    text-align:center;\n}"
 
 /***/ }),
 
@@ -431,7 +431,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Welcome to Cal Poly IEEE Member Services!</h1>\n<button routerLink=\"/membersearch\">Search For Members</button>"
+module.exports = "<div class=\"home-container\">\n    <h1>IEEE Member Services</h1>\n    <button routerLink=\"/membersearch\">Search For Members</button>\n</div>"
 
 /***/ }),
 
@@ -486,7 +486,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".centerpage {\n    width:20%;\n    text-align:center;\n}"
 
 /***/ }),
 
@@ -497,7 +497,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container centerpage\">\n\n  <!-- <div class=\"col-md-4 col-md-offset-4\"></div> -->\n\n  <div class=\"col-md-4 col-md-offset-4\">\n   <br>\n   <br>\n    <section>\n      <div class=\"panel panel-default\">\n        <h3 class=\"text-center\"><b>Sign In</b></h3>\n        <div class=\"panel-body\">\n          <form (submit)=\"authenticateCurrentUser($event)\">\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></i></span>\n            <input type=\"text\" name=\"username\" id=\"username\" class=\"form-control\" placeholder=\"Enter IEEE Username\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></i></span>\n            <input type=\"password\" name=\"password\" id=\"password\" class=\"form-control\" placeholder=\"Enter IEEE Password\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n           <button type=\"submit\" class=\"btn btn-primary btn-lg center-block\">Sign in</button>\n          <br>\n            <div class=\"alert alert-danger\" role=\"alert\" *ngIf=\"this.user.getUserLoggedInErrorMessage() != ' '\">\n              <strong>Error: {{this.user.getUserLoggedInErrorMessage()}}</strong>\n            </div>\n          </form>\n        </div>\n      </div>\n    </section>\n  </div> \n\n  <!-- <div class=\"col-md-4 col-md-offset-4\"></div> -->\n\n</div>"
+module.exports = "<div class=\"container centerpage\">\n\n   <br>\n   <br>\n    <section>\n      <div class=\"panel panel-default\">\n        <h3 class=\"text-center\"><b>Sign In</b></h3>\n        <div class=\"panel-body\">\n          <form (submit)=\"authenticateCurrentUser($event)\">\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></i></span>\n            <input type=\"text\" name=\"username\" id=\"username\" class=\"form-control\" placeholder=\"Enter IEEE Username\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></i></span>\n            <input type=\"password\" name=\"password\" id=\"password\" class=\"form-control\" placeholder=\"Enter IEEE Password\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n           <button type=\"submit\" class=\"btn btn-primary btn-lg center-block\">Sign in</button>\n          <br>\n            <div class=\"alert alert-danger\" role=\"alert\" *ngIf=\"this.user.getUserLoggedInErrorMessage() != ' '\">\n              <strong>Error: {{this.user.getUserLoggedInErrorMessage()}}</strong>\n            </div>\n          </form>\n        </div>\n      </div>\n    </section>\n\n  <!-- <div class=\"col-md-4 col-md-offset-4\"></div> -->\n\n</div>"
 
 /***/ }),
 
