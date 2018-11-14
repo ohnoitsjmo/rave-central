@@ -19,7 +19,7 @@ import {DataTableModule} from "angular-6-datatable";
 
 const appRoutes:Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent
   }
 ]

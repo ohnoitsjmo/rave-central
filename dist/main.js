@@ -135,13 +135,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var appRoutes = [
     {
-        path: '',
-        component: _login_login_component__WEBPACK_IMPORTED_MODULE_13__["LoginComponent"]
-    },
-    {
         path: 'home',
-        component: _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
-        canActivate: [_authguard_guard__WEBPACK_IMPORTED_MODULE_14__["AuthguardGuard"]]
+        component: _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"]
     }
 ];
 var AppModule = /** @class */ (function () {
