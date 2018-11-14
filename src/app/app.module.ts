@@ -12,8 +12,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './home/home.component';
-import { MemberFilterPipe } from './member-search/member-filter.pipe';
-import { MemberSearchComponent } from './member-search/member-search.component';
 import { LoginComponent } from './login/login.component';
 import { AuthguardGuard } from './authguard.guard';
 import { UserService } from './user.service';
@@ -28,11 +26,6 @@ const appRoutes:Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [AuthguardGuard]
-  },
-  {
-    path: 'membersearch',
-    component: MemberSearchComponent,
-    canActivate: [AuthguardGuard]
   }
 ]
 
@@ -42,8 +35,6 @@ const appRoutes:Routes = [
     FooterComponent, 
     AppComponent,
     HomeComponent,
-    MemberFilterPipe,
-    MemberSearchComponent,
     LoginComponent
   ],
   imports: [
