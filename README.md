@@ -8,3 +8,7 @@ TODO:
 - Create User profile that display user rating and prior purchases/vouchers
 - Create a secure login/logout system for users
 - Create functionality for buying/selling tickets using some form of secure checkout API
+
+APIS:
+- https://www.eventbrite.com/developer/v3/
+- https://developers.google.com/maps/documentation/javascript/tutorial
