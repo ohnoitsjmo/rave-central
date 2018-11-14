@@ -11,7 +11,7 @@ function webpackEmptyAsyncContext(req) {
 	// Here Promise.resolve().then() is used instead of new Promise() to prevent
 	// uncaught exception popping up in devtools
 	return Promise.resolve().then(function() {
-		var e = new Error('Cannot find module "' + req + '".');
+		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	});
@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "app-footer {\n    position: fixed;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    text-align: center;\n}"
+module.exports = "app-footer {\n    position: fixed;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7SUFDaEIsUUFBUTtJQUNSLFVBQVU7SUFDVixZQUFZO0lBQ1osbUJBQW1CO0NBQ3RCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhcHAtZm9vdGVyIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgbGVmdDogMDtcbiAgICBib3R0b206IDA7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -102,8 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/ngx-spinner.umd.js");
-/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(ngx_spinner__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _authguard_guard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./authguard.guard */ "./src/app/authguard.guard.ts");
@@ -256,7 +255,7 @@ var AuthguardGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -319,7 +318,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -409,7 +408,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".home-container {\n    text-align:center;\n}"
+module.exports = ".home-container {\n    text-align:center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7Q0FDckIiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5ob21lLWNvbnRhaW5lciB7XG4gICAgdGV4dC1hbGlnbjpjZW50ZXI7XG59Il19 */"
 
 /***/ }),
 
@@ -475,7 +474,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".centerpage {\n    width:20%;\n    text-align:center;\n}\n\n.panel {\n    margin-top:50%;\n}"
+module.exports = ".centerpage {\n    width:20%;\n    text-align:center;\n}\n\n.panel {\n    margin-top:50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFVBQVU7SUFDVixrQkFBa0I7Q0FDckI7O0FBRUQ7SUFDSSxlQUFlO0NBQ2xCIiwiZmlsZSI6InNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXJwYWdlIHtcbiAgICB3aWR0aDoyMCU7XG4gICAgdGV4dC1hbGlnbjpjZW50ZXI7XG59XG5cbi5wYW5lbCB7XG4gICAgbWFyZ2luLXRvcDo1MCU7XG59Il19 */"
 
 /***/ }),
 
@@ -486,7 +485,7 @@ module.exports = ".centerpage {\n    width:20%;\n    text-align:center;\n}\n\n.p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container centerpage\">\n\n   <br>\n   <br>\n    <section>\n      <div class=\"panel panel-default\">\n        <h3 class=\"text-center\"><b>Sign In</b></h3><br>\n        <div class=\"panel-body\">\n          <form (submit)=\"authenticateCurrentUser($event)\">\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></i></span>\n            <input type=\"text\" name=\"username\" id=\"username\" class=\"form-control\" placeholder=\"Enter IEEE Username\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></i></span>\n            <input type=\"password\" name=\"password\" id=\"password\" class=\"form-control\" placeholder=\"Enter IEEE Password\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n           <button type=\"submit\" class=\"btn btn-primary btn-lg center-block\">Sign in</button>\n          <br>\n            <div class=\"alert alert-danger\" role=\"alert\" *ngIf=\"this.user.getUserLoggedInErrorMessage() != ' '\">\n              <strong>Error: {{this.user.getUserLoggedInErrorMessage()}}</strong>\n            </div>\n          </form>\n        </div>\n      </div>\n    </section>\n\n  <!-- <div class=\"col-md-4 col-md-offset-4\"></div> -->\n\n</div>"
+module.exports = "<div class=\"container centerpage\">\n\n   <br>\n   <br>\n    <section>\n      <div class=\"panel panel-default\">\n        <h3 class=\"text-center\"><b>Sign In</b></h3><br>\n        <div class=\"panel-body\">\n          <form (submit)=\"authenticateCurrentUser($event)\">\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></i></span>\n            <input type=\"text\" name=\"username\" id=\"username\" class=\"form-control\" placeholder=\"Enter Username\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n          <div class=\"input-group input-group-lg\">\n            <span class=\"input-group-addon\" id=\"sizing-addon1\"><i class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></i></span>\n            <input type=\"password\" name=\"password\" id=\"password\" class=\"form-control\" placeholder=\"Enter Password\" aria-describedby=\"sizing-addon1\" required>\n          </div>\n          <br>\n           <button type=\"submit\" class=\"btn btn-primary btn-lg center-block\">Sign in</button>\n          <br>\n            <div class=\"alert alert-danger\" role=\"alert\" *ngIf=\"this.user.getUserLoggedInErrorMessage() != ' '\">\n              <strong>Error: {{this.user.getUserLoggedInErrorMessage()}}</strong>\n            </div>\n          </form>\n        </div>\n      </div>\n    </section>\n\n  <!-- <div class=\"col-md-4 col-md-offset-4\"></div> -->\n\n</div>"
 
 /***/ }),
 

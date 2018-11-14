@@ -24,8 +24,7 @@ const appRoutes:Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthguardGuard]
+    component: HomeComponent
   }
 ]
 
